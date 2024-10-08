@@ -4,10 +4,13 @@ import './app-main.css';
 import Footer from "../footer";
 import TaskList from "../task-list";
 
-const AppMain = ({tasks}) => {
+const AppMain = ({tasks, deleteTask}) => {
     return (
         <section className='main'>
-            <TaskList tasks = {tasks}/>
+            <TaskList
+                tasks={tasks}
+                deleteTask={(id) => deleteTask(id)}
+            />
             <Footer/>
         </section>
     );
