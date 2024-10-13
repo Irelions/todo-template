@@ -5,23 +5,9 @@ import './task.css';
 
 export default class Task extends Component {
 
-    state = {
-        timeAgo: formatDistanceToNow(new Date(2000, 1, 1), {addSuffix: true}),
-        done: false,
-    };
-
-    setCompleted = () => {
-        this.setState(() => {
-            return {
-                done: !this.state.done
-            };
-        });
-    };
-
     render() {
-        const {id, description} = this.props.task;
-        const {deleteTask} = this.props;
-        const {done, timeAgo} = this.state;
+        const {id, description, done} = this.props.task;
+        const {deleteTask, onDoneTask} = this.props;
 
         let className;
         let checked;
@@ -42,12 +28,12 @@ export default class Task extends Component {
                         type="checkbox"
                         checked={checked}
                         onClick={() => {
-                            this.setCompleted()
+                            onDoneTask(id);
                         }}
                     />
                     <label>
                         <span className='description'>{description}</span>
-                        <span className='created'>{timeAgo}</span>
+                        <span className='created'>{formatDistanceToNow(new Date(2000, 1,1), {addSuffix: true})}</span>
                     </label>
                     <button className='icon icon-edit'></button>
                     <button

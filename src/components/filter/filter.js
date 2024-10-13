@@ -1,9 +1,15 @@
 import React from "react";
 import './filter.css';
 
-const Filter = ({filter}) => {
+const Filter = ({filter, setActiveFilter}) => {
+
     return (
-            <button  className={filter.isActive ? 'selected' : ''}>
+            <button
+                className={filter.isActive ? 'selected' : ''}
+                onClick={() => {
+                    setActiveFilter(filter.id);
+                }}
+            >
                 {filter.label}
             </button>
     );
