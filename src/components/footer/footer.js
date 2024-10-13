@@ -3,19 +3,22 @@ import './footer.css';
 
 import TasksFilter from "../tasks-filter";
 
-const Footer = () => {
-    const filters = [
-        {id: 'all', label: 'All', isActive: true},
-        {id: 'active', label: 'Active', isActive: false},
-        {id: 'completed', label: 'Completed', isActive: false},
-    ];
-
+const Footer = ({setActiveFilter, clearAllCompleted, countActiveTask}) => {
 
     return (
         <footer className='footer'>
-            <span className='todo-count'> 1 items left</span>
-            <TasksFilter filters = {filters}/>
-            <button className='clear-completed'>Clear completed</button>
+            <span className='todo-count'> {countActiveTask} items left</span>
+            <TasksFilter
+                setActiveFilter={(filterId) => {
+                    setActiveFilter(filterId)
+                }}
+            />
+            <button
+                className='clear-completed'
+                onClick={clearAllCompleted}
+            >
+                Clear completed
+            </button>
         </footer>
 
     );
