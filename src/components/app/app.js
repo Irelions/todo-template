@@ -45,7 +45,7 @@ export default class App extends Component {
           const { taskState } = tasks[indexTask];
           const isFind = taskState.includes(state);
           if (isFind) {
-            newTaskState = taskState.replace(state, '');
+            newTaskState = taskState.replace(state, '').trim();
           } else {
             newTaskState = `${taskState} ${state}`;
           }
